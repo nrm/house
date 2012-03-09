@@ -20,8 +20,8 @@ def deploy():
     with cd(PROJECT_DIR):
         run('git pull')
         run_in_virtualenv('pip install -r requirements.txt')
-        run_in_virtualenv('./manage.py syncdb')
-        run_in_virtualenv('./manage.py migrate')
+        run_in_virtualenv('python manage.py syncdb')
+        run_in_virtualenv('python manage.py migrate')
         #run_in_virtualenv('./manage.py clear_cache')
         run('restart ' + PROJECT_NAME)
 
