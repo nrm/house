@@ -23,7 +23,9 @@ def deploy():
         run_in_virtualenv('python manage.py syncdb')
         run_in_virtualenv('python manage.py migrate')
         #run_in_virtualenv('./manage.py clear_cache')
-        run('restart ' + PROJECT_NAME)
+        run('sudo supervisorctl -c /etc/supervisor/supervisord.conf restart %s'%PROJECT_NAME)
+        run('sudo supervisorctl -c /etc/supervisor/supervisord.conf status %s'%PROJECT_NAME)
+        #run('restart ' + PROJECT_NAME)
 
 
 #import settings
